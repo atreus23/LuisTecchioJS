@@ -1,3 +1,27 @@
+let nombre = prompt("Ingrese su nombre:");
+let apellido = prompt("Ingrese su apellido:");
+
+let usuario = prompt("Ingrese su usuario: ");
+let contraseña = prompt("Ingrese su contraseña: ");
+alert(`${nombre} corrobore los datos por favor`)
+let user = "";
+let pass = "";
+let intentos = 3;
+function login(usuario, contraseña, intentos){
+    if(!(usuario === "" && contraseña === "")){
+        while(intentos>0 && (usuario !== user || contraseña !== pass)){
+            user = prompt("Ingrese su usuario: ");
+            pass = prompt("Ingrese su contraseña: ");
+            if (user === usuario && pass === contraseña){
+                alert(`Bienvenido ${nombre}, acceso permitido`);
+            }
+            else{
+                alert(`Usuario o contraseña incorrectos, te quedan ${intentos--} intentos`);
+            }
+        }
+    }
+}
+login(usuario, contraseña, intentos);
 class Articulo{
 
     constructor(articulo,precio){
@@ -12,24 +36,14 @@ class Articulo{
     }
 }
 
-const producto1 = new Articulo("almohadon",3000);
-const producto2 = new Articulo("tela",1000);
-const producto3 = new Articulo("sillon",20000);
-const producto4 = new Articulo("silla",8000);
-const producto5 = new Articulo("cuerina",2000);
-const producto6 = new Articulo("cuero",4000);
-
 let articuloElegido = [
-    producto1,
-    producto2,
-    producto3,
-    producto4,
-    producto5,
-    producto6
+    producto1 = new Articulo("almohadon",3000),
+    producto2 = new Articulo("tela",1000),
+    producto3 = new Articulo("sillon",20000),
+    producto4 = new Articulo("silla",8000),
+    producto5 = new Articulo("cuerina",2000),
+    producto6 = new Articulo("cuero",4000)
 ]
-
-let nombre = prompt("Ingrese su nombre");
-let apellido = prompt("Ingrese su apellido");
 
 let eleccion = prompt(
     `Hola ${nombre}, bienvenido a Tapisar, digite tu producto a comprar:
@@ -45,11 +59,13 @@ let total = 0;
 
 function eleccionProducto(){
 
-    console.log(`${nombre}, tus prendas elegidas son ${articuloElegido[eleccion-1].articulo}`);
-    
-    total += articuloElegido[eleccion-1.].precioTotal();
-
     while(eleccion != "no"){
+
+        console.log(`${nombre}, tus prendas elegidas son ${articuloElegido[eleccion-1].articulo}`);
+    
+        total += articuloElegido[eleccion-1.].precioTotal();
+
+    
         eleccion = prompt(
             `${nombre}, ¿desea realizar alguna otra compra?
             De lo contrario digite "no":
@@ -89,23 +105,29 @@ function pagar(){
             case 1:
                 recargo = total * 0.10;
                 total += recargo;
+                valorCuota = total / 3;
 
                 alert(`${nombre}, su pago fue aprobado
-                Total abonado ${total}`);
+                Total abonado ${total}.
+                Valor de cuotas ${valorCuota}.`);
                 break;
             case 2:
                 recargo = total * 0.15;
                 total += recargo;
+                valorCuota = total / 6;
 
                 alert(`${nombre}, su pago fue aprobado
-                Total abonado ${total}`);
+                Total abonado ${total}.
+                Valor de cuotas ${valorCuota}.`);
                 break;
             case 3:
                 recargo = total * 0.20;
                 total += recargo;
+                valorCuota = total / 12;
 
                 alert(`${nombre}, su pago fue aprobado
-                Total abonado ${total}`);
+                Total abonado ${total}.
+                Valor de cuotas ${valorCuota}.`);
                 break;
         }
     }
